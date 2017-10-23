@@ -1,13 +1,12 @@
 package unsw.ContentFetcher;
 
-/**
- * Hello world!
- *
- */
+import unsw.ContentFetcher.Service.ContentFetcherService;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        ContentFetcherService service = new ContentFetcherService();
+        service.getCareerAndQualifications();
     }
 }
