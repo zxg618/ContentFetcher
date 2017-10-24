@@ -30,21 +30,52 @@ public class KeywordStrategy extends FilterStrategy {
 	}
 
 	public String[] fetchContent(String text) {
-		this.retrieveKeyNamePrefixes(text);
+		this.retrieveKeyNames(text);
 		String[] words = text.split(" ");
 		ArrayList<String> resultList = new ArrayList<String>();
 		int i = 0;
 		
 		for (i = 0; i < words.length; i++) {
 			if (this.containsCapitalLetters(words[i]) && !this.keyNames.contains(words[i])) {
-				resultList.add(words[i]);
+				if (
+						i > 1 
+						&& (this.wordEndWithChar(words[i - 1], '.') || this.wordEndWithChar(words[i], ','))
+						) {
+					//identify if a word is a starting word by check previous word's last char
+					//starting word of a sentence is always
+				} else {
+					resultList.add(words[i]);	
+				}
+				
 			}
 		}
 		
 		return resultList.toArray(new String[0]);
 	}
 	
-	protected void retrieveKeyNamePrefixes(String text) {
+	/**
+	 * Check if a word ends with a specific char
+	 * 
+	 * @param String word
+	 * @param char c
+	 * @return boolean
+	 */
+	protected boolean wordEndWithChar(String word, char c) {
+		int length = word.length();
+		if (word.charAt(length - 1) == c) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Get starting of biography which is always a prefix and a name
+	 * these will be used as filters
+	 * 
+	 * @param text
+	 */
+	protected void retrieveKeyNames(String text) {
 		String[] words = text.split(" ");
 		int i = 0;
 		
