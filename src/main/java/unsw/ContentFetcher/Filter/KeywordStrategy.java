@@ -39,7 +39,7 @@ public class KeywordStrategy extends FilterStrategy {
 			if (this.containsCapitalLetters(words[i]) && !this.keyNames.contains(words[i])) {
 				if (
 						i > 1 
-						&& (this.wordEndWithChar(words[i - 1], '.') || this.wordEndWithChar(words[i], ','))
+						&& this.wordEndWithChar(words[i - 1], '.')
 						) {
 					//identify if a word is a starting word by check previous word's last char
 					//starting word of a sentence is always
