@@ -1,7 +1,5 @@
 package unsw.ContentFetcher.Filter;
 
-import java.util.ArrayList;
-
 /**
  * Rules:
  * 1. start position of a sentence does NOT count
@@ -12,9 +10,5 @@ import java.util.ArrayList;
  *
  */
 public class CaseStrategy extends FilterStrategy {
-	public String[] fetchContent(String text) {
-		ArrayList<String> keywords = new ArrayList<String>();
-		return null;
-	}
-
+	//to be dpne
 }

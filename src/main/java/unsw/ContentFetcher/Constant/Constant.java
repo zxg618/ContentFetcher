@@ -23,4 +23,11 @@ public class Constant {
 			"College",
 			"Institution"
 	};
+	
+	public static final String[] CONNECTING_KEYS = {
+			"of",
+			"in",
+			"&",
+			"and"
+	};
 }
