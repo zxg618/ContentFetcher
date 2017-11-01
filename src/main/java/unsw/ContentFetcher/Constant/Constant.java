@@ -8,8 +8,8 @@ public class Constant {
 	public static final String[] NAME_PREFIXES = {
 			"Mr.",
 			"Mrs.",
-			"Ms",
-			"Dr"
+			"Ms.",
+			"Dr."
 	};
 	
 	public static final String[] KEYS = {

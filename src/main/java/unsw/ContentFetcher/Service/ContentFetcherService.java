@@ -14,6 +14,7 @@ public class ContentFetcherService {
 		Fetcher fetcher = new Fetcher();
 		String[] keywords = null;
 		int i = 0;
+		int j = 0;
 		
 		KeywordStrategy kws = new KeywordStrategy();
 		fetcher.setStrategy(kws);
@@ -34,15 +35,33 @@ public class ContentFetcherService {
 				+ "differences. She currently serves on the boards of Workshop Houston, Da Camera of Houston and "
 				+ "is a Trustee of the University of Virginia School of Engineering. She received her BS degree in "
 				+ "Systems Engineering from University of Virginia and an MBA from Harvard University.";
+		
 		keywords = fetcher.fetchCareerAndQualification(sampleBio);
 		System.out.println("Sample Data");
-		System.out.println(String.join("|", keywords));
+		for (i = 0; i < keywords.length; i++) {
+			if (keywords[i].equals("\n")) {
+				System.out.println("");
+				continue;
+			}
+			System.out.print(keywords[i]);
+			System.out.print(", ");
+		}
+		System.out.println("");
+		//System.out.println(String.join(",", keywords));
 		//test area ends
 		
 		for (i = 0; i < records.length; i++) {
 			keywords = fetcher.fetchCareerAndQualification(records[i].getBiography());
 			System.out.println(records[i].getSourceId());
-			System.out.println(String.join("|", keywords));
+			for (j = 0; j < keywords.length; j++) {
+				if (keywords[j].equals("\n")) {
+					System.out.println("");
+				} else {
+					System.out.print(keywords[j]);
+					System.out.print(", ");	
+				}
+			}
+			System.out.println("");
 		}
 	}
 }

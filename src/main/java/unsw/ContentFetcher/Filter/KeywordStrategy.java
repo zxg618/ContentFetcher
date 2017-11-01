@@ -56,7 +56,7 @@ public class KeywordStrategy extends FilterStrategy {
 					resultList.add(tmpWord.toString());
 					System.out.println("Word: " + tmpWord.toString() + " added and i is: " + i);
 					*/
-					resultList.add(words[i]);
+					resultList.add(words[i].replaceAll("[,.]", ""));
 				}
 				
 			} else {
@@ -105,10 +105,18 @@ public class KeywordStrategy extends FilterStrategy {
 						}
 						String wholeWord = String.join(" ", wordParts);
 						//System.out.println(wholeWord + "#######");
-						resultList.add(wholeWord);
+						resultList.add(wholeWord.replaceAll("[,.]", ""));
 						i = end;
 					}
 				}
+			}
+			
+			//added sentence separator
+			//System.out.println(words[i] + "#######");
+			if (i > 0 && this.wordEndWithChar(words[i - 1], '.') && resultList.size() > 0 && !resultList.get(resultList.size() - 1).equals("\n")) {
+				//String word = resultList.get(resultList.size() - 1);
+				//resultList.remove(resultList.size() - 1);
+				resultList.add("\n");
 			}
 		}
 		

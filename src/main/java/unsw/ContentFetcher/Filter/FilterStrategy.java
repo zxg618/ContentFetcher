@@ -71,4 +71,16 @@ public class FilterStrategy {
 		
 		return flag;
 	}
+	
+	public String removeNonLiteralChars(String text) {
+		StringBuilder newText = new StringBuilder();
+		int i = 0;
+		for (i = 0; i < text.length(); i++) {
+			if (Character.isLetter(text.charAt(i))) {
+				newText.append(text.charAt(i));
+			}
+		}
+		
+		return newText.toString();
+	}
 }
